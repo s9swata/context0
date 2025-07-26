@@ -1,8 +1,11 @@
 /**
  * Context0 API Server
  *
+ * A semantic memory API service powered by vector embeddings and blockchain storage.
+ * Provides enterprise-grade memory management with AI-powered search capabilities.
+ *
  * @author TeamVyse
- * @email admin@context0.tech
+ * @email admin@archivenet.tech
  * @license MIT
  * @copyright 2025 TeamVyse. All rights reserved.
  */
@@ -32,8 +35,9 @@ async function initializeServices() {
 			console.warn("Continuing with testnet fallback...");
 		}
 	}
-
+	// Initialize vector embedding service first (required by other services)
 	await embeddingService.ensureInitialized();
+	// Initialize semantic search configuration
 	await EizenService.initEizenConfig();
 	console.log("Context0 is ready to handle user requests");
 }
@@ -41,11 +45,14 @@ async function initializeServices() {
 // Bootstrap application startup
 initializeServices()
 	.then(async () => {
+		// Dynamic route imports ensure services are initialized before route handlers
 		const healthRoutes = await import("./routes/health.js");
 		const memoryRoutes = await import("./routes/memories.js");
 		const adminRoutes = await import("./routes/admin.js");
 		const deploymentRoutes = await import("./routes/deploy.js");
 		const { webhook } = await import("./routes/webhook.js");
+		const subscriptionRoutes = await import("./routes/subscriptions.js");
+		const instancesRoutes = await import("./routes/instances.js");
 
 		const app = express();
 		const PORT = Number.parseInt(process.env.PORT || "3000", 10);
@@ -60,7 +67,8 @@ initializeServices()
 				origin: string | undefined,
 				callback: (error: Error | null, allow?: boolean) => void,
 			) => {
-					if (!origin || allowedOrigins.includes(origin)) {
+				// Allow requests without origin (mobile apps, Postman, etc.)
+				if (!origin || allowedOrigins.includes(origin)) {
 					callback(null, true);
 				} else {
 					callback(new Error("Not allowed by CORS"));
@@ -84,7 +92,7 @@ initializeServices()
 				version: "1.0.0",
 				license: "MIT",
 				copyright: "© 2025 TeamVyse. All rights reserved.",
-				contact: "admin@context0.tech",
+				contact: "admin@archivenet.tech",
 				documentation: "/health",
 			});
 		});
@@ -95,6 +103,8 @@ initializeServices()
 		app.use("/memories", memoryRoutes.default);
 		app.use("/deploy", deploymentRoutes.default);
 		app.use("/webhook", webhook);
+		app.use("/subscriptions", subscriptionRoutes.default);
+		app.use("/instances", instancesRoutes.default);
 
 		// Global error handling middleware (must be last)
 		app.use(errorHandler);
