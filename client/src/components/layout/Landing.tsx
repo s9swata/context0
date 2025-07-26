@@ -21,7 +21,7 @@ export const Landing = () => {
           {/* Main Title
                         <div className="text-center mb-8 sm:mb-12">
                             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-[Black] text-white tracking-[4px] sm:tracking-[8px] md:tracking-[15px] lg:tracking-[25px] xl:tracking-[35px] drop-shadow-xl leading-tight">
-                                ARCHIVENET
+                                context0
                             </h1>
                         </div>
 

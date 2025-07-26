@@ -196,7 +196,7 @@ export function SidebarDemo() {
 
   // Setup instructions for the dashboard
   const setupInstructions = `# Clone the repository
-git clone https://github.com/s9swata/archivenet.git && cd mcp
+git clone https://github.com/s9swata/context0.git && cd mcp
 
 # Install mcp
 npm install
@@ -210,7 +210,7 @@ npm run edit-env TOKEN=<your-session-key>
 npm run setup claude    # For Claude Desktop
 npm run setup cursor   # For Cursor IDE
 
-# Start using ArchiveNET
+# Start using context0
 # Your MCP server is now ready!`;
 
   const renderMainContent = () => {
@@ -252,9 +252,7 @@ npm run setup cursor   # For Cursor IDE
               <h2 className="text-2xl font-[semiBold] mb-1 text-white">
                 Your Instances
               </h2>
-              <p className="text-neutral-400">
-                Manage your ArchiveNet Instances
-              </p>
+              <p className="text-neutral-400">Manage your context0 Instances</p>
             </div>
           </div>
         </div>
@@ -276,7 +274,7 @@ npm run setup cursor   # For Cursor IDE
                     >
                       <div className="flex-1">
                         <h3 className="text-white font-[semiBold]">
-                          Your ArchiveNET Instance
+                          Your context0 Instance
                         </h3>
                         <div className="flex items-center gap-2 mt-1">
                           <div className="w-2 h-2 bg-green-500 rounded-full"></div>
@@ -366,7 +364,7 @@ npm run setup cursor   # For Cursor IDE
                 {/* Logo/Title */}
                 <div className="mt-8 mb-6">
                   <h1 className="text-xl font-[bold] text-white px-2">
-                    ArchiveNet
+                    context0
                   </h1>
                 </div>
 
