@@ -42,11 +42,11 @@ export default function Navbar() {
           <div className="flex items-center space-x-3">
             <img
               src={logo.src}
-              alt="ArchiveNET Logo"
+              alt="context0 Logo"
               className="h-10 w-10 rounded-lg"
             />
             <span className="text-xl font-bold text-white tracking-tight">
-              ArchiveNET
+              context0
             </span>
           </div>
 
