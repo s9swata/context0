@@ -1,11 +1,7 @@
 import { z } from "zod";
 import { memoryMetadataSchema, searchFiltersSchema } from "./common.js";
 
-<<<<<<< HEAD
 // This schemas are what context0 api expects
-=======
-// This schemas are what Context0 api expects
->>>>>>> origin
 
 /** Memory creation request - what MCP server sends to API
 POST https://api.context0.com/memories
