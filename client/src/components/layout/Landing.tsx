@@ -1,9 +1,13 @@
 import Image from "next/image";
+import Marquee from "./Marquee";
+import { NavBar } from "./NavBar";
 
 export const Landing = () => {
   return (
     <>
       <div className="w-full bg-black min-h-screen relative overflow-hidden">
+        <NavBar />
+
         <Image
           src="/images/blackhole.png"
           alt="Background"
@@ -34,6 +38,9 @@ export const Landing = () => {
             </p>
           </div>
         </div>
+      </div>
+      <div className="bg-black pt-8 sm:pt-12 md:pt-16 lg:pt-10 px-4 sm:px-6 md:px-8 lg:px-10 flex justify-center items-center overflow-hidden">
+        <Marquee />
       </div>
     </>
   );
