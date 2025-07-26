@@ -8,7 +8,7 @@ import { MemoryService } from "../services/MemoryService.js";
 import { errorResponse, successResponse } from "../utils/responses.js";
 
 /**
- * ADMIN ROUTES - Context0 Memory Service Administration
+ * ADMIN ROUTES - ArchiveNET Memory Service Administration
  *
  * These routes provide direct high-level access to the Memory Service
  * for administrative purposes only. They are NOT intended for public use.
@@ -153,12 +153,12 @@ router.post(
 );
 
 /**
- * GET /admin/count/:contractId
+ * GET /admin/memories/count/:contractId
  * Check how many memories exist for a specific contract ID
  *
  * @NOTE contractID is a path parameter not query
  */
-router.get("/count/:contractId", auth, async (req, res) => {
+router.get("/memories/count/:contractId", async (req, res) => {
 	try {
 		const { contractId } = req.params;
 
@@ -237,7 +237,7 @@ router.post("/deploy", auth, async (_req, res) => {
 });
 
 /**
- * POST /admin/full-deploy
+ * POST /admin/test-deploy
  * Test the deploy.ts route functionality (admin testing)
  *
  * Admin Use Case: Test the deployForUser function with a provided user ID
@@ -261,7 +261,7 @@ router.post("/deploy", auth, async (_req, res) => {
  *   "message": "Deploy service test completed successfully"
  * }
  */
-router.post("/full-deploy", auth, async (req, res) => {
+router.post("/test-deploy", auth, async (req, res) => {
 	try {
 		const { userId } = req.body;
 
@@ -318,7 +318,7 @@ router.post("/full-deploy", auth, async (req, res) => {
 });
 
 /**
- * GET /admin/full-deploy-status
+ * GET /admin/test-deploy-status
  * Test the deploy status checking functionality (admin testing)
  *
  * Admin Use Case: Test the getDeploymentStatus function with a provided user ID
@@ -339,7 +339,7 @@ router.post("/full-deploy", auth, async (req, res) => {
  *   "message": "Deploy status test completed successfully"
  * }
  */
-router.get("/full-deploy-status", auth, async (req, res) => {
+router.get("/test-deploy-status", auth, async (req, res) => {
 	try {
 		const userId = req.query.userId as string;
 

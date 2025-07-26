@@ -7,7 +7,7 @@ import { auth } from "../middlewares/auth.js";
 import { verifyTransaction } from "../utils/etherscan.js";
 
 /**
- * Webhook Routes for Context0 API
+ * Webhook Routes for ArchiveNET API
  *
  * This module handles external webhook events from:
  * - Clerk (user authentication/registration)
@@ -71,7 +71,7 @@ webhook.post("/clerk/registered", async (req, res) => {
 /**
  * Web3 Payment Webhook for Subscription Management
  *
- * Processes cryptocurrency payments for Context0 subscriptions.
+ * Processes cryptocurrency payments for ArchiveNET subscriptions.
  * Verifies blockchain transactions and creates/updates user subscriptions.
  *
  * @route POST /webhook/payments/web3
