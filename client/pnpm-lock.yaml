@@ -32,9 +32,12 @@ importers:
       '@tabler/icons-react':
         specifier: ^3.34.1
         version: 3.34.1(react@19.1.0)
+<<<<<<< HEAD
       '@tanstack/react-query':
         specifier: ^5.83.0
         version: 5.83.0(react@19.1.0)
+=======
+>>>>>>> origin
       axios:
         specifier: ^1.11.0
         version: 1.11.0

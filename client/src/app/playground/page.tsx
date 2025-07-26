@@ -1,6 +1,5 @@
 import AppSideBar from "@/components/layout/AppSideBar";
 import { RedirectToSignIn, SignedIn, SignedOut } from "@clerk/nextjs";
-import { Textarea } from "@/components/ui/textarea";
 
 export const Playground = () => {
   return (
