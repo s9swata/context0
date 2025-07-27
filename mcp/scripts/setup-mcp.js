@@ -321,7 +321,7 @@ API_TIMEOUT=30000
       mcpEnv.API_TIMEOUT = envVars.API_TIMEOUT;
     }
 
-    // Add or update the archivenet server configuration
+    // Add or update the context0 server configuration
     config.mcpServers["context0"] = {
       command: "node",
       args: [this.serverPath],
@@ -355,7 +355,7 @@ API_TIMEOUT=30000
       mcpEnv.API_TIMEOUT = envVars.API_TIMEOUT;
     }
 
-    // Add or update the archivenet server configuration
+    // Add or update the context0 server configuration
     config.mcpServers["context0"] = {
       command: "node",
       args: [this.serverPath],

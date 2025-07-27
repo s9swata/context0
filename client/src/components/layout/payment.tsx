@@ -123,9 +123,9 @@ export function Web3Payment() {
       console.log("Payment webhook hit successfully");
     } catch (err) {
       console.error("Error hitting payment webhook:", err);
+      return;
     }
-
-    router.push("/dashboard");
+    router.push("/dashboard?success=true");
   }
 
   useEffect(() => {
@@ -197,7 +197,7 @@ export function Web3Payment() {
         <Card className="p-8 bg-gradient-to-r from-zinc-900 to-zinc-800 border border-zinc-700">
           <div className="space-y-6">
             <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-bold flex items-center gap-2">
+              <h2 className="text-2xl font-bold flex items-center gap-2 text-white">
                 <WalletIcon />
                 Complete Payment
               </h2>
@@ -247,7 +247,7 @@ export function Web3Payment() {
             {/* Recipient Address */}
             <div className="space-y-2">
               <label className="text-sm text-gray-400">Payment Address:</label>
-              <div className="bg-zinc-800 rounded-lg p-3 text-xs break-all select-all border border-zinc-700 font-mono">
+              <div className="bg-zinc-800 rounded-lg p-3 text-xs break-all select-all border border-zinc-700 font-mono text-white">
                 {RECIPIENT_ADDRESS || "Address not configured"}
               </div>
             </div>
@@ -257,9 +257,9 @@ export function Web3Payment() {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div
-                    className={`w-3 h-3 rounded-full ${isConnected ? "bg-green-400" : "bg-red-400"}`}
+                    className={`w-3 h-3 rounded-xl ${isConnected ? "bg-green-400" : "bg-red-400"}`}
                   ></div>
-                  <span className="font-medium">
+                  <span className="font-medium text-white">
                     {isConnected ? "Wallet Connected" : "Wallet Not Connected"}
                   </span>
                 </div>
@@ -274,7 +274,7 @@ export function Web3Payment() {
                                 </div>
                             ) */}
               {isConnected && (
-                <div className="mt-3 pt-3 border-t border-zinc-700">
+                <div className="mt-3 pt-3 border-t border-zinc-700 text-white">
                   <h1>Your Wallet Address: {address}</h1>
                 </div>
               )}

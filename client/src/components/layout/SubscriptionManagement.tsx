@@ -3,9 +3,8 @@
 import { Box, Lock, Settings } from "lucide-react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { Badge } from "@/components/ui/badge";
-import DynamicButton from "@/components/ui/DynamicButton";
 import { Button } from "@/components/ui/button";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const plans = [
   {
@@ -46,7 +45,13 @@ const plans = [
   },
 ];
 
-export function Subscriptions({ currentPlan }: { currentPlan?: string }) {
+interface SubscriptionManagementProps {
+  currentPlan?: string;
+}
+
+export function SubscriptionManagement({
+  currentPlan,
+}: SubscriptionManagementProps) {
   const getIcon = (index: number) => {
     switch (index) {
       case 0:
@@ -62,17 +67,17 @@ export function Subscriptions({ currentPlan }: { currentPlan?: string }) {
   const router = useRouter();
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="text-center mb-8 sm:mb-12">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-[semiBold] text-white mb-3 sm:mb-4">
-          Choose the right plan that suits your needs
+    <div className="w-full">
+      <div className="mb-8">
+        <h1 className="text-3xl font-[bold] text-white mb-2">
+          Manage Subscription
         </h1>
-        <h2 className="text-base sm:text-lg md:text-xl font-[Regular] text-neutral-400">
-          Decentralized memory protocol for agentic LLMs. Scalable. Secure.
-        </h2>
+        <p className="text-neutral-400 font-[regular]">
+          Choose the plan that best fits your needs and unlock more features.
+        </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
         {plans.map((plan, index) => (
           <SubscriptionCard
             key={plan.title}
@@ -80,19 +85,20 @@ export function Subscriptions({ currentPlan }: { currentPlan?: string }) {
             icon={getIcon(index)}
             title={plan.title}
             onClick={() =>
-              router.push(
-                `/payment?subscription=${plan.title.toLocaleLowerCase()}`,
-              )
+              router.push(`/payments?subscription=${plan.title.toLowerCase()}`)
             }
             description={
               <div>
-                <div className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-blue-400">
+                <div className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-3 text-blue-400">
                   {plan.price}
-                  <span className="text-xs sm:text-sm font-normal">/month</span>
+                  <span className="text-xs font-normal">/month</span>
                 </div>
-                <ul className="space-y-2">
+                <ul className="space-y-1">
                   {plan.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="text-xs sm:text-sm">
+                    <li
+                      key={featureIndex}
+                      className="text-md font-[regular] text-white"
+                    >
                       • {feature}
                     </li>
                   ))}
@@ -100,7 +106,7 @@ export function Subscriptions({ currentPlan }: { currentPlan?: string }) {
               </div>
             }
             currentPlan={
-              currentPlan === plan.title.toLocaleLowerCase() ? true : false
+              currentPlan === plan.title.toLowerCase() ? true : false
             }
             recommended={plan.recommended}
           />
@@ -129,10 +135,13 @@ const SubscriptionCard = ({
   recommended,
   onClick,
 }: GridItemProps) => {
-  const pathname = usePathname();
   return (
-    <li className={`min-h-[14rem] flex-1 list-none ${area}`.trim()}>
-      <div className="relative h-full rounded-2xl border border-gray-600/30 p-2 md:rounded-3xl md:p-3">
+    <li className={`min-h-[12rem] flex-1 list-none ${area}`.trim()}>
+      <div className="relative h-full rounded-xl border border-gray-600/30 p-2">
+        {/* Glassmorphism Background */}
+        <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/5 via-white/[0.02] to-transparent backdrop-blur-xl" />
+        <div className="absolute inset-0 rounded-xl bg-gradient-to-tl from-blue-400/5 via-transparent to-white/5" />
+
         <GlowingEffect
           spread={40}
           glow={true}
@@ -140,10 +149,10 @@ const SubscriptionCard = ({
           proximity={64}
           inactiveZone={0.01}
         />
-        <div className="border-0.75 relative flex h-full flex-col justify-center overflow-hidden rounded-xl p-4 sm:p-6 shadow-[0px_0px_27px_0px_#2D2D2D]">
+        <div className="border-0.75 relative flex h-full flex-col justify-center overflow-hidden rounded-lg p-3 sm:p-4 shadow-[0px_0px_27px_0px_#2D2D2D]">
           <div className="relative flex flex-1 flex-col justify-between">
-            <div className="flex flex-row justify-between items-start mb-4">
-              <div className="w-fit rounded-lg border border-gray-600 p-2">
+            <div className="flex flex-row justify-between items-start mb-3">
+              <div className="w-fit rounded-lg border border-gray-600 p-1.5 bg-white/5 backdrop-blur-sm">
                 {icon}
               </div>
               {recommended && (
@@ -155,32 +164,28 @@ const SubscriptionCard = ({
                 </Badge>
               )}
             </div>
-            <div className="space-y-3 flex-1">
-              <h3 className="font-sans text-lg sm:text-xl md:text-2xl font-semibold text-balance text-white">
+            <div className="space-y-2 flex-1">
+              <h3 className="font-sans text-2xl font-semibold text-balance text-white">
                 {title}
               </h3>
-              <div className="font-sans text-sm md:text-base text-neutral-400">
+              <div className="font-sans text-lg text-neutral-400">
                 {description}
               </div>
             </div>
-            {pathname === "/" || pathname === "" ? null : (
-              <div className="mt-4">
-                {currentPlan ? (
-                  <Button
-                    variant="default"
-                    className="bg-blue-500 text-white w-full p-2 text-sm"
-                  >
-                    Current Plan
-                  </Button>
-                ) : (
-                  <DynamicButton
-                    title={"Proceed to Checkout"}
-                    emoji={"🤟"}
-                    onClick={onClick}
-                  />
-                )}
-              </div>
-            )}
+            <div className="mt-3">
+              {currentPlan ? (
+                <Button className="bg-blue-400 text-white w-full text-sm">
+                  Current Plan
+                </Button>
+              ) : (
+                <Button
+                  className="bg-blue-400 hover:bg-blue-500 text-white w-full text-sm cursor-pointer"
+                  onClick={onClick}
+                >
+                  Upgrade to {title}
+                </Button>
+              )}
+            </div>
           </div>
         </div>
       </div>

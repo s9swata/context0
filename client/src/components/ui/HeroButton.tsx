@@ -2,7 +2,7 @@
 import React from "react";
 import { HoverBorderGradient } from "./hover-border-gradient";
 import Image from "next/image";
-import context0 from "../../../public/icons/cropped_logo.jpeg";
+import context0 from "../../../public/icons/context0_logo_cropped.jpeg";
 
 export function HeroButton({ onClick }: { onClick?: () => void }) {
   return (

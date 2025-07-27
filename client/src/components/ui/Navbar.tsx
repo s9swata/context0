@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "./button";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import { IconMenu2, IconX } from "@tabler/icons-react";
-import logo from "../../../public/icons/cropped_logo.jpeg";
+import logo from "../../../public/icons/context0_logo_cropped.jpeg";
 
 export default function Navbar() {
   const { isSignedIn } = useUser();
