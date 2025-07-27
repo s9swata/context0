@@ -30,7 +30,7 @@ Context0 is a revolutionary decentralized memory management platform that combin
 
 ## Architecture
 
-// image add
+<img width="3019" height="3137" alt="archv2" src="https://github.com/user-attachments/assets/940a4d23-4bf5-47e0-8a99-d75d5ba7147f" />
 
 Context0 is a comprehensive monorepo consisting of four main components:
 
