@@ -10,7 +10,7 @@ import {
 
 import React, { useRef, useState } from "react";
 
-import logo from "../../../public/icons/cropped_logo.jpeg";
+import logo from "../../../public/icons/context0_logo_cropped.jpeg";
 
 interface NavbarProps {
   children: React.ReactNode;
@@ -236,8 +236,14 @@ export const NavbarLogo = () => {
       href="#"
       className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
     >
-      <img src={logo.src} alt="logo" width={50} height={50} />
-      <span className=" text-white font-[bold] text-lg">ArchiveNET</span>
+      <img
+        src={logo.src}
+        alt="logo"
+        width={50}
+        height={50}
+        className="rounded-md"
+      />
+      <span className=" text-white font-[bold] text-lg">Context0</span>
     </a>
   );
 };
