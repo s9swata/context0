@@ -2,7 +2,7 @@
 
 > **Where AI memories live forever** - A decentralized semantic memory platform powered by blockchain and vector search
 
-[![Hackathon Project](https://img.shields.io/badge/Hackathon-2025-ff6b6b?style=for-the-badge&logo=code&logoColor=white)](https://github.com/your-username/ArchiveNET)
+[![Hackathon Project](https://img.shields.io/badge/Hackathon-2025-ff6b6b?style=for-the-badge&logo=code&logoColor=white)](https://github.com/your-username/context0)
 [![Arweave](https://img.shields.io/badge/Powered%20by-Arweave-9945FF?style=for-the-badge&logo=arweave&logoColor=white)](https://arweave.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
@@ -12,9 +12,9 @@
 [![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)](https://redis.io/)
 
 [![License](https://img.shields.io/badge/License-ISC-blue.svg?style=flat-square)](LICENSE)
-[![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen?style=flat-square)](https://github.com/your-username/ArchiveNET)
-[![AI Powered](https://img.shields.io/badge/AI-Powered-orange?style=flat-square&logo=openai)](https://github.com/your-username/ArchiveNET)
-[![Blockchain](https://img.shields.io/badge/Blockchain-Decentralized-purple?style=flat-square)](https://github.com/your-username/ArchiveNET)
+[![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen?style=flat-square)](https://github.com/your-username/context0)
+[![AI Powered](https://img.shields.io/badge/AI-Powered-orange?style=flat-square&logo=openai)](https://github.com/your-username/context0)
+[![Blockchain](https://img.shields.io/badge/Blockchain-Decentralized-purple?style=flat-square)](https://github.com/your-username/context0)
 
 Context0 is a revolutionary decentralized memory management platform that combines the power of AI embeddings with blockchain permanence. Built on Arweave, it provides enterprise-grade semantic search capabilities through advanced vector database technology, enabling applications to store, search, and retrieve contextual information with unprecedented permanence and accuracy.
 

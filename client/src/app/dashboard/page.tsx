@@ -67,6 +67,7 @@ const DashboardContent: React.FC = () => {
     { id: 1, user: "", action: "", time: "", avatar: "" },
   ]);
   const [subscriptionPlan, setSubscriptionPlan] = useState<string>("");
+  const [quotaUsed, setQuotaUsed] = useState<number>(0);
 
   useEffect(() => {
     const checkSubscriptionAndInitialize = async () => {
@@ -90,32 +91,25 @@ const DashboardContent: React.FC = () => {
           return;
         }
 
-        // Set subscription plan
+        // Set subscription plan and quota used
         setSubscriptionPlan(subscriptionData.data.plan || "free");
+        const quotaUsedValue = subscriptionData.data.quotaUsed || 0;
+        setQuotaUsed(quotaUsedValue);
 
-        // If user is subscribed, fetch memory data using stored token
-        const storedToken = localStorage.getItem("context0_token");
-        if (storedToken) {
-          const memoryData = await getUserMemoryCount(storedToken);
-          if (memoryData.success && memoryData.data) {
-            const totalMemories = memoryData.data.totalMemories || 0;
+        // Update stats with quota used
+        setStats((prevStats) => ({
+          ...prevStats,
+          memories: quotaUsedValue.toString(),
+        }));
 
-            // Update stats with memory count
-            setStats((prevStats) => ({
-              ...prevStats,
-              memories: totalMemories.toString(),
-            }));
-
-            // Update monthly data with current memory count (last month)
-            setMonthlyData((prevData) =>
-              prevData.map((item, index) =>
-                index === prevData.length - 1
-                  ? { ...item, memories: totalMemories }
-                  : item,
-              ),
-            );
-          }
-        }
+        // Update monthly data with current quota used (last month)
+        setMonthlyData((prevData) =>
+          prevData.map((item, index) =>
+            index === prevData.length - 1
+              ? { ...item, memories: quotaUsedValue }
+              : item,
+          ),
+        );
       } catch (error) {
         console.error("Error checking subscription or fetching data:", error);
         // On error, redirect to payment page to be safe
