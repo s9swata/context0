@@ -51,11 +51,11 @@ const DashboardContent: React.FC = () => {
   } = usePaymentSuccess();
   const [monthlyData, setMonthlyData] = useState([
     { name: "Jan", memories: 0 },
-    { name: "Feb", memories: 0 },
     { name: "Mar", memories: 0 },
-    { name: "Apr", memories: 0 },
     { name: "May", memories: 0 },
-    { name: "Jun", memories: 3 },
+    { name: "Jul", memories: 0 },
+    { name: "Sep", memories: 0 },
+    { name: "Nov", memories: 3 },
   ]);
   const [stats, setStats] = useState({
     space: "0/1GB",
@@ -246,7 +246,13 @@ const DashboardContent: React.FC = () => {
               <CodeBlock
                 language="bash"
                 filename="setup.sh"
-                code={`TOKEN=${contractHashFingerprint || "your-token-here"}`}
+                code={`git clone https://github.com/Itz-Agasta/context0
+  cd mcp
+  npm install
+  npm run edit-env INSERT_CONTEXT_ENDPOINT="https://context0-540193079740.asia-south2.run.app/memories/insert"
+  npm run edit-env SEARCH_CONTEXT_ENDPOINT="https://context0-540193079740.asia-south2.run.app/memories/search"
+  npm run edit-env TOKEN="${contractHashFingerprint || "your-token"}"
+  npm run build`}
               />
             </div>
           ) : (
