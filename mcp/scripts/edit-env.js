@@ -166,7 +166,7 @@ API_TIMEOUT=30000
     const lines = [];
 
     // Add header comment
-    lines.push("# ArchiveNet API Configuration");
+    lines.push("# Context0 API Configuration");
     lines.push("");
 
     // Define the order of variables

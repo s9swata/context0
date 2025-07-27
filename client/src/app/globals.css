@@ -3,6 +3,50 @@
 
 @custom-variant dark (&:is(.dark *));
 
+html {
+    body {
+        background-color: black;
+    }
+}
+
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+    overflow: clip;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-smooth iframe {
+    pointer-events: none;
+}
+
+.lenis.lenis-autoToggle {
+    transition-property: overflow;
+    transition-duration: 1ms;
+    transition-behavior: allow-discrete;
+}
+
+@theme inline {
+    --animate-move: move 5s linear infinite;
+
+    @keyframes move {
+        0% {
+            transform: translateX(-200px);
+        }
+        100% {
+            transform: translateX(200px);
+        }
+    }
+}
+
+@custom-variant dark (&:is(.dark *));
+
 @theme inline {
     --radius-sm: calc(var(--radius) - 4px);
     --radius-md: calc(var(--radius) - 2px);
