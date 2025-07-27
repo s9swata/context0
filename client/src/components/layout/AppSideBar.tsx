@@ -58,7 +58,7 @@ function UserSection() {
   const { user } = useUser();
 
   return (
-    <div className="flex justify-center p-2">
+    <div className="flex justify-start pl-2 p-2">
       <UserButton
         appearance={{
           elements: {

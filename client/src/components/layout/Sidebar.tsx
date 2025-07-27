@@ -17,9 +17,6 @@ import {
 } from "@tabler/icons-react";
 import { getInstances, getUserSubscription } from "@/lib/api";
 import { Card, CardContent } from "@/components/ui/card";
-import { CodeBlock } from "@/components/ui/code-block";
-import { SubscriptionManagement } from "./SubscriptionManagement";
-import { OnboardingFlow } from "./OnboardingFlow";
 
 interface Instance {
   id: string;
@@ -222,23 +219,6 @@ npm run setup cursor   # For Cursor IDE
       );
     }
 
-    if (activeView === "subscription") {
-      return <SubscriptionManagement currentPlan={subscription?.plan} />;
-    }
-
-    if (activeView === "onboarding") {
-      return (
-        <OnboardingFlow
-          currentStep={getCurrentOnboardingStep()}
-          hasSubscription={subscription?.isActive || false}
-          hasInstance={instances.length > 0}
-          onStepComplete={handleStepComplete}
-          onNavigateToSubscription={handleNavigateToSubscription}
-          refreshSubscriptionData={refreshSubscriptionData}
-        />
-      );
-    }
-
     // Dashboard view - only shown for subscribed users with instances
     return (
       <>
@@ -315,11 +295,6 @@ npm run setup cursor   # For Cursor IDE
                               Follow these steps to connect your instance to
                               your development environment:
                             </p>
-                            <CodeBlock
-                              code={setupInstructions}
-                              language="bash"
-                              filename="setup-instructions.sh"
-                            />
                             <div className="mt-3 p-3 bg-blue-900/20 border border-blue-500/30 rounded-lg">
                               {" "}
                               <p className="text-blue-300 text-sm">
